@@ -736,7 +736,7 @@ class CMISService extends CMISRepositoryWrapper
 
     function getLink($objectId, $linkName)
     {
-        if ($this->_link_cache[$objectId][$linkName])
+        if (array_key_exists($objectId, $this->_link_cache) && (!empty($this->_link_cache[$objectId][$linkName])))
         {
             return $this->_link_cache[$objectId][$linkName];
         }
@@ -885,7 +885,7 @@ xmlns:cmism="http://docs.oasis-open.org/ns/cmis/messaging/200908/"
 xmlns:atom="http://www.w3.org/2005/Atom"
 xmlns:app="http://www.w3.org/2007/app"
 xmlns:cmisra="http://docs.oasisopen.org/ns/cmis/restatom/200908/">
-<cmis:statement>{q}</cmis:statement>
+<cmis:statement><![CDATA[{q}]]></cmis:statement>
 <cmis:searchAllVersions>{searchAllVersions}</cmis:searchAllVersions>
 <cmis:includeAllowableActions>{includeAllowableActions}</cmis:includeAllowableActions>
 <cmis:includeRelationships>{includeRelationships}</cmis:includeRelationships>
