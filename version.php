@@ -29,9 +29,9 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version   = 2013030302;        // If version == 0 then module will not be installed
+$plugin->version   = 2013042000;        // If version == 0 then module will not be installed
 $plugin->requires  = 2012120300;        // Requires 2.4+
 $plugin->cron      = 0;                 // Period for cron to check this module (secs)
 $plugin->component = 'repository_cmis'; // To check on upgrade, that module sits in correct place
 $plugin->maturity  = MATURITY_ALPHA;    // This version's maturity level
-$plugin->release   = '0.1-2013030302';  // Human-friendly version name
+$plugin->release   = '0.2-2013042000';  // Human-friendly version name

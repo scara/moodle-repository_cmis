@@ -331,9 +331,11 @@ class repository_cmis extends repository
             return false;
         }
 
-        $mform->addElement('text', 'cmis_app_url', get_string('cmisappurl', 'repository_cmis'), array('size' => 50), 'AAA');
+        $mform->addElement('text', 'cmis_app_url', get_string('cmisappurl', 'repository_cmis'), array('size' => 50));
+        $mform->setType('cmis_app_url', PARAM_URL);
         $mform->addElement('static', 'cmis_app_url_intro', '', get_string('cmisappurltext', 'repository_cmis'));
         $mform->addElement('text', 'cmis_folder_path', get_string('cmisfolderpath', 'repository_cmis'), array('size' => 50));
+        $mform->setType('cmis_folder_path', PARAM_PATH);
 
         $mform->addRule('cmis_app_url', get_string('required'), 'required', null, 'client');
 
