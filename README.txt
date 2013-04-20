@@ -5,20 +5,21 @@ Description
 -----------
 It allows you to browse, search, download and use public files from a server,
 tipically a CMS, exposing its content by means of CMIS 1.0.  
+It supports the HTTP Proxy configuration of Moodle.
 
 It also gets benefits from the [MUC framework](http://docs.moodle.org/dev/The_Moodle_Universal_Cache_%28MUC%29) to implement two levels of cache,
 at the folder level:  
 1. CMIS identifiers;  
 2. children and search result sets.  
-
-Cache can be purged perfoming a search with the special keyword: `*purgecache*`.
+Cache can be purged by perfoming a search with the special keyword: `*purgecache*`.
 
 TODO
 ----
+* Implement FILE_REFERENCE support and re-evaluate the need for FILE_EXTERNAL.
+* Restrict cache purging to administrators only.
+* Make search configurable: 'none', 'within the folder', 'down the directory tree'.
 * Verify/Implement the correct support for Microsoft Sharepoint 2013 via CMIS.
-* Restrict cache purging to administrators.
-* Make search configurable: none, within the folder, down the directory tree.
-* Evaluate the need for FILE_REFERENCE support.
+* Evaluate OAuth support, nice feature for FILE_EXTERNAL.
 * Code cleanup.
 
 
@@ -26,7 +27,9 @@ Known issues
 ------------
 * It supports only RESTful AtomPub endpoints (Atom Publishing Protocol).
 * It supports only CMIS 1.0 compliant repositories.
-* Tested just with Alfresco Community Edition.
+* Tested with:
+  * Alfresco Community Edition v4.2.0 (4576)
+  * Nuxeo Platform v5.6
 
 
 License

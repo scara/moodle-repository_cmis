@@ -158,16 +158,18 @@ class repository_cmis extends repository
         if (empty($path)) {
             $path = empty($this->options['cmis_folder_path']) ? '/' : $this->options['cmis_folder_path'];
         } else {
-            $bits = explode('/', $path);
-            $offset = empty($this->options['cmis_folder_path']) ? 0 : count(explode('/', $this->options['cmis_folder_path']));
-            for ($i = $offset++; $i < count($bits); $i++) {
+            $offset = 0;
+            if (!empty($this->options['cmis_folder_path'])) {
+                preg_match_all('@/([^\/]+)@i', $this->options['cmis_folder_path'], $matches);
+                $offset = count($matches[1]);
+            }
+            preg_match_all('@/([^\/]+)@i', $path, $matches);
+            $bits = $matches[1];
+            for ($i = $offset; $i < count($bits); $i++) {
                 $bit = $bits[$i];
-                if (empty($bit)) {
-                    continue;
-                }
                 $list['path'][] = array(
                     'name'=> $bit,
-                    'path'=> '/' . implode('/', array_slice($bits, 1, $i))
+                    'path'=> '/' . implode('/', array_slice($bits, 0, $i + 1))
                 );
             }
         }
